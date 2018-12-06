@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 
+	"github.com/aikizoku/beego/src/lib/log"
 	"github.com/aikizoku/beego/src/lib/util"
 	"github.com/aikizoku/beego/src/model"
 	"github.com/aikizoku/beego/src/repository"
-	"google.golang.org/appengine/log"
 )
 
 type sample struct {
@@ -45,9 +45,19 @@ func (s *sample) TestDataStore(ctx context.Context) error {
 			CreatedAt: util.TimeNow(),
 		},
 		&model.Sample{
-			Category:  "fuga",
-			Name:      "sample忠生",
-			Enabled:   false,
+			Category: "fuga",
+			Name:     "sample忠生",
+			Enabled:  false,
+			Details: []*model.SampleDetail{
+				&model.SampleDetail{
+					Name:   "ほげほげねーむ",
+					Detail: "ほげほげでたいる",
+				},
+				&model.SampleDetail{
+					Name:   "ふがふがねーむ",
+					Detail: "ふがふがでたいる",
+				},
+			},
 			CreatedAt: util.TimeNow(),
 		},
 	})

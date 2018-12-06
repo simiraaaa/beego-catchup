@@ -8,7 +8,11 @@ import (
 
 	"firebase.google.com/go"
 	"firebase.google.com/go/auth"
-	"google.golang.org/appengine/log"
+	"github.com/aikizoku/beego/src/lib/log"
+)
+
+const (
+	headerPrefix string = "BEARER"
 )
 
 type service struct {
@@ -42,15 +46,15 @@ func (s *service) Authentication(ctx context.Context, r *http.Request) (string, 
 		return userID, claims, err
 	}
 
-	idToken := s.getAuthorizationHeader(r)
-	if idToken == "" {
+	token := s.getTokenByRequest(r)
+	if token == "" {
 		err = fmt.Errorf("no auth token error")
 		return userID, claims, err
 	}
 
-	t, err := c.VerifyIDToken(ctx, idToken)
+	t, err := c.VerifyIDToken(ctx, token)
 	if err != nil {
-		log.Warningf(ctx, "c.VerifyIDToken: %s", err.Error())
+		log.Warningf(ctx, "c.VerifyIDToken: %s, token: %s", err.Error(), token)
 		return userID, claims, err
 	}
 
@@ -74,10 +78,11 @@ func (s *service) getAuthClient(ctx context.Context) (*auth.Client, error) {
 	return c, nil
 }
 
-func (s *service) getAuthorizationHeader(r *http.Request) string {
+func (s *service) getTokenByRequest(r *http.Request) string {
 	if ah := r.Header.Get("Authorization"); ah != "" {
-		if len(ah) > 6 && strings.ToUpper(ah[0:6]) == "BEARER" {
-			return ah[7:]
+		pLen := len(headerPrefix)
+		if len(ah) > pLen && strings.ToUpper(ah[0:pLen]) == headerPrefix {
+			return ah[pLen+1:]
 		}
 	}
 	return ""

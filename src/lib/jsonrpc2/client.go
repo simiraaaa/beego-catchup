@@ -7,12 +7,13 @@ import (
 	"net/http"
 
 	"github.com/aikizoku/beego/src/lib/httpclient"
-	"google.golang.org/appengine/log"
+	"github.com/aikizoku/beego/src/lib/log"
 )
 
 // Client ... JSONRPC2のリクエストを行う
 type Client struct {
 	URL      string
+	Headers  map[string]string
 	Requests []*ClientRequest
 }
 
@@ -27,14 +28,14 @@ func (c *Client) AddRequest(id string, method string, params *json.RawMessage) {
 }
 
 // DoSingle ... JSONRPC2のシングルリクエストを行う
-func (c *Client) DoSingle(ctx context.Context, method string, params interface{}) (*json.RawMessage, *json.RawMessage, error) {
+func (c *Client) DoSingle(ctx context.Context, method string, params interface{}) (*json.RawMessage, *ErrorResponse, error) {
 	p, err := json.Marshal(params)
 	if err != nil {
 		log.Errorf(ctx, "json.Marchal error: %s", err.Error())
 		return nil, nil, err
 	}
 
-	status, body, err := httpclient.PostJSON(ctx, c.URL, p, nil)
+	status, body, err := httpclient.PostJSON(ctx, c.URL, p, &httpclient.HTTPOption{Headers: c.Headers})
 	if err != nil {
 		log.Errorf(ctx, "httpclient.PostJSON error: %s", err.Error())
 		return nil, nil, err
@@ -82,4 +83,12 @@ func (c *Client) DoBatch(ctx context.Context) ([]*ClientResponse, error) {
 	}
 
 	return res, nil
+}
+
+// NewClient ... Clientを作成する
+func NewClient(url string, headers map[string]string) *Client {
+	return &Client{
+		URL:     url,
+		Headers: headers,
+	}
 }
