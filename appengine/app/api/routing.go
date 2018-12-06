@@ -3,11 +3,11 @@ package main
 import (
 	"net/http"
 
+	"github.com/go-chi/chi"
 	"github.com/simiraaaa/beego-catchup/src/config"
 	"github.com/simiraaaa/beego-catchup/src/handler"
 	"github.com/simiraaaa/beego-catchup/src/lib/log"
 	"github.com/simiraaaa/beego-catchup/src/middleware"
-	"github.com/go-chi/chi"
 )
 
 // Routing ... ルーティング設定
@@ -36,6 +36,7 @@ func Routing(r *chi.Mux, d *Dependency) {
 
 	// Ping
 	r.Get("/ping", handler.Ping)
+	r.Get("/test", handler.Test)
 
 	http.Handle("/", r)
 }
