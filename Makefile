@@ -82,7 +82,7 @@ define init
 endef
 
 define run
-	dev_appserver.py deploy/appengine/$1/$2/app.yaml
+	dev_appserver.py deploy/appengine/$1/$2/app.yaml --port=58080
 endef
 
 define deploy

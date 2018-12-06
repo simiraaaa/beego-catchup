@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/aikizoku/beego/src/model"
+	"github.com/simiraaaa/beego-catchup/src/model"
 )
 
 // Sample ... サービスのインターフェース

@@ -3,8 +3,8 @@ package worker
 import (
 	"net/http"
 
-	"github.com/aikizoku/beego/src/handler"
-	"github.com/aikizoku/beego/src/lib/log"
+	"github.com/simiraaaa/beego-catchup/src/handler"
+	"github.com/simiraaaa/beego-catchup/src/lib/log"
 )
 
 // SampleHandler ... サンプルのハンドラ定義

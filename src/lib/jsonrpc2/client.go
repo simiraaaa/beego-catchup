@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/aikizoku/beego/src/lib/httpclient"
-	"github.com/aikizoku/beego/src/lib/log"
+	"github.com/simiraaaa/beego-catchup/src/lib/httpclient"
+	"github.com/simiraaaa/beego-catchup/src/lib/log"
 )
 
 // Client ... JSONRPC2のリクエストを行う

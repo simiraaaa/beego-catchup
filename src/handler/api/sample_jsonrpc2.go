@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/aikizoku/beego/src/lib/log"
-	"github.com/aikizoku/beego/src/model"
-	"github.com/aikizoku/beego/src/service"
+	"github.com/simiraaaa/beego-catchup/src/lib/log"
+	"github.com/simiraaaa/beego-catchup/src/model"
+	"github.com/simiraaaa/beego-catchup/src/service"
 )
 
 // SampleJSONRPC2Handler ... JSONRPC2のハンドラ

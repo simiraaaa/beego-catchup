@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/aikizoku/beego/src/handler"
+	"github.com/simiraaaa/beego-catchup/src/handler"
 	"github.com/go-chi/chi"
 )
 

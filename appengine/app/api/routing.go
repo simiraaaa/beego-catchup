@@ -3,10 +3,10 @@ package main
 import (
 	"net/http"
 
-	"github.com/aikizoku/beego/src/config"
-	"github.com/aikizoku/beego/src/handler"
-	"github.com/aikizoku/beego/src/lib/log"
-	"github.com/aikizoku/beego/src/middleware"
+	"github.com/simiraaaa/beego-catchup/src/config"
+	"github.com/simiraaaa/beego-catchup/src/handler"
+	"github.com/simiraaaa/beego-catchup/src/lib/log"
+	"github.com/simiraaaa/beego-catchup/src/middleware"
 	"github.com/go-chi/chi"
 )
 

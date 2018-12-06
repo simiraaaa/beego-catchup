@@ -4,12 +4,12 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/aikizoku/beego/src/handler"
-	"github.com/aikizoku/beego/src/lib/firebaseauth"
-	"github.com/aikizoku/beego/src/lib/httpheader"
-	"github.com/aikizoku/beego/src/lib/log"
-	"github.com/aikizoku/beego/src/model"
-	"github.com/aikizoku/beego/src/service"
+	"github.com/simiraaaa/beego-catchup/src/handler"
+	"github.com/simiraaaa/beego-catchup/src/lib/firebaseauth"
+	"github.com/simiraaaa/beego-catchup/src/lib/httpheader"
+	"github.com/simiraaaa/beego-catchup/src/lib/log"
+	"github.com/simiraaaa/beego-catchup/src/model"
+	"github.com/simiraaaa/beego-catchup/src/service"
 )
 
 // SampleHandler ... 記事のハンドラ
